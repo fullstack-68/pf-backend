@@ -13,8 +13,27 @@ services:
       - POSTGRES_HOST=${POSTGRES_HOST}
       - POSTGRES_APP_USER=${POSTGRES_APP_USER}
       - POSTGRES_APP_PASSWORD=${POSTGRES_APP_PASSWORD}
+    volumes:
+      - ./logs:/app/logs
     post_start:
-      - command: ["npm", "run", "db:migrate"]
+      - command:
+          [
+            "sh",
+            "-c",
+            "echo '===Starting migration===' | tee /app/logs/migration.log",
+          ]
+      - command:
+          [
+            "sh",
+            "-c",
+            "npm run db:migrate 2>&1 | tee -a /app/logs/migration.log",
+          ]
+      - command:
+          [
+            "sh",
+            "-c",
+            "echo '===End of migration===' | tee -a /app/logs/migration.log",
+          ]
 networks:
   preflight_pf-net: # Check by using `docker network ls` command
     external: true
