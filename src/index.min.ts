@@ -5,9 +5,6 @@ import { dbClient } from "@db/client.js";
 //Intializing the express app
 const app = express();
 
-// Extracts the entire body portion of an incoming request stream and exposes it on req.body.
-app.use(express.json());
-
 // Query
 app.get("/todo", async (req, res, next) => {
   try {
