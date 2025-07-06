@@ -14,7 +14,7 @@ const debug = Debug("pf-backend");
 const app = express();
 
 //Middleware
-app.use(morgan("dev", { immediate: true }));
+app.use(morgan("dev", { immediate: false }));
 app.use(helmet());
 app.use(
   cors({
