@@ -1,3 +1,15 @@
+# Setup
+
+- Make sure that you already have DB running from `pf-db` project.
+- Make `.env` from `.env.example` (fillin the password)
+- Make `.npmrc` from `.npmrc.example` (adjust your shell accordingly)
+- `pnpm install`
+- `pnpm run dev`
+
+# Setup from scratch
+
+- See https://cmu.to/fullstack68
+
 # Containerization and test
 
 - Make `.env.test` from `.env.test.example`
